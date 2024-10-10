@@ -1,0 +1,49 @@
+body {
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+}
+
+.table {
+    background-color: aqua;
+    width: 100%; /* Ensure the table occupies 100% of the width */
+    overflow-x: auto; /* Allows horizontal scrolling if content is too wide */
+}
+
+table {
+    width: 100%; /* Make sure the table itself takes full width */
+    border-collapse: collapse; /*Collapses borders for a cleaner look*/
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: left; /* Align text to the left for better readability */
+    padding: 8px; /* Add some padding for a better look */
+}
+
+th {
+    background-color: #f2f2f2; /* Optional: a different background for the header */
+}
+
+.logo {
+    width: 100%; /* Full width for logo, if used */
+    background-color:white; /* Background color for logo */
+}
+
+
+.navbar{
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a{
+    text-decoration: none;
+}
+
+
+.btns{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}

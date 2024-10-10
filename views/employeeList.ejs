@@ -1,0 +1,40 @@
+<% layout("/boilerplate.ejs") %>
+<h3>Total Count: <%= totalEmp %></h3>
+<table class="table">
+    <tr>
+        <th>Unique Id</th>
+        <th>Picture</th> <!-- New Picture column -->
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile No</th>
+        <th>Designation</th>
+        <th>Gender</th>
+        <th>Course</th>
+        <th>Create Date</th>
+        <th>Action</th>
+    </tr>
+    <% for(let emp of allEmp) { %>
+    <tr>
+        <td><%= emp._id %></td>
+        <td>
+            <!-- Employee Image in circular form -->
+            <img src="<%= emp.image.url %>" alt="<%= emp.name %>" class="img-fluid rounded-circle" style="width: 300px; height: 100px;">
+        </td>
+        <td><%= emp.name %></td>
+        <td><%= emp.email %></td>
+        <td><%= emp.mobileNo %></td>
+        <td><%= emp.designation %></td>
+        <td><%= emp.gender %></td>
+        <td><%= emp.course %></td>
+        <td><%= emp.createDate.toLocaleDateString() %></td>
+        <td>
+            <div class="btns">
+                <a href="/<%= emp._id %>" class="btn btn-dark edit-btn">Edit</a>
+                <form action="/employees/<%= emp._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button class="btn btn-dark">Delete</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    <% } %>
+</table>

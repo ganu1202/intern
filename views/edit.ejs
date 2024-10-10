@@ -1,0 +1,70 @@
+<body>
+    <% layout("/boilerplate.ejs") %>
+    <div class="row mt-3 mb-3">
+        <div class="col-8 offset-2">
+            <h3>Edit Employee Details</h3>
+            <form action="/employee/<%= emp._id %>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="Employee[name]" value="<%= emp.name %>" required>
+                    <div class="valid-feedback">Name Looks Good</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="Employee[email]" class="form-control" id="email" value="<%= emp.email %>" required>
+                    <div class="invalid-feedback">Please enter a valid email</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mobileNo" class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobileNo" name="Employee[mobileNo]" value="<%= emp.mobileNo %>" required>
+                    <div class="valid-feedback">Mobile Number Looks Good</div>
+                    <div class="invalid-feedback">Please enter a mobile number</div>
+                </div>
+
+                <div class="mb-3 col-md-8">
+                    <label for="designation" class="form-label">Designation</label>
+                    <select name="Employee[designation]" id="designation" class="form-control">
+                        <option value="HR" <%= emp.designation === 'HR' ? 'selected' : '' %>>HR</option>
+                        <option value="Manager" <%= emp.designation === 'Manager' ? 'selected' : '' %>>Manager</option>
+                        <option value="Sales" <%= emp.designation === 'Sales' ? 'selected' : '' %>>Sales</option>
+                    </select>
+                </div>
+
+                <!-- Employee Gender -->
+                <div class="mb-3">
+                    <label class="form-label">Gender</label><br>
+                    <input type="radio" id="male" name="Employee[gender]" value="Male" <%= emp.gender === 'Male' ? 'checked' : '' %> required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="Employee[gender]" value="Female" <%= emp.gender === 'Female' ? 'checked' : '' %>>
+                    <label for="female">Female</label>
+                    <div class="invalid-feedback">Please select a gender</div>
+                </div>
+
+                <!-- Employee Course -->
+                <div class="mb-3">
+                    <label class="form-label">Courses</label><br>
+                    <input type="checkbox" id="mca" name="Employee[course]" value="MCA" <%= emp.course && emp.course.includes('MCA') ? 'checked' : '' %>>
+                    <label for="mca">MCA</label>
+                    <input type="checkbox" id="bca" name="Employee[course]" value="BCA" <%= emp.course && emp.course.includes('BCA') ? 'checked' : '' %>>
+                    <label for="bca">BCA</label>
+                    <input type="checkbox" id="bsc" name="Employee[course]" value="BSC" <%= emp.course && emp.course.includes('BSC') ? 'checked' : '' %>>
+                    <label for="bsc">BSC</label>
+                </div>
+
+                <div class="mb-3">
+                    Original Employee Image <br>
+                    <img src="<%= URL %>" alt="Employee Image"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload New Image</label>
+                    <input type="file" id="image" class="form-control" name="Employee[image]">
+                </div>
+                
+                <button type="submit" class="btn btn-dark mt-3">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
